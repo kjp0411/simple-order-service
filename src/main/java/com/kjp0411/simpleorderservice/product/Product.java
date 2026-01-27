@@ -30,4 +30,8 @@ public class Product {
         }
         this.stock -= quantity;
     }
+
+    public int getStock() {
+        return stock;
+    }
 }

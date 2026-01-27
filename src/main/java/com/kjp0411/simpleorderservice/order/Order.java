@@ -30,4 +30,8 @@ public class Order {
         this.quantity = quantity;
         this.createdAt = LocalDateTime.now();
     }
+
+    public Long getId() {
+        return id;
+    }
 }
