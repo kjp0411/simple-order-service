@@ -7,9 +7,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "orders") // "order"는 SQL 예약어이므로 테이블 이름을 "orders"로 지정
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
