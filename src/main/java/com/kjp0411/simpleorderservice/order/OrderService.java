@@ -39,4 +39,11 @@ public class OrderService {
         // 5. 결과 반환(주문 ID)
         return savedOrder.getId();
     }
+
+    @Transactional(readOnly = true)
+    public OrderResponse get(Long orderId) {
+        Order order = orderRepository.findById(orderId)
+            .orElseThrow(() -> new IllegalArgumentException("주문이 존재하지 않습니다."));
+        return OrderResponse.from(order);
+    }
 }
