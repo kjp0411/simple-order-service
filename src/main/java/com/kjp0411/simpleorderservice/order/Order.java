@@ -36,4 +36,12 @@ public class Order {
     public Long getId() {
         return id;
     }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }
