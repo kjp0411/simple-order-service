@@ -51,7 +51,7 @@ public class OrderService {
 
     @Transactional(readOnly = true)
     public Page<OrderResponse> getAll(Pageable pageable) {
-        Page<Order> orders = orderRepository.findAll(pageable);
+        Page<Order> orders = orderRepository.findAllWithProduct(pageable);
         return orders.map(OrderResponse::from);
     }
 }
