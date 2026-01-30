@@ -1,7 +1,12 @@
 package com.kjp0411.simpleorderservice.order;
 
+import com.kjp0411.simpleorderservice.product.ProductResponse;
 import jakarta.validation.Valid;
 import java.net.URI;
+import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,5 +42,12 @@ public class OrderController {
     public ResponseEntity<OrderResponse> get(@PathVariable Long orderId) {
         OrderResponse response = orderService.get(orderId);
         return ResponseEntity.ok(response);
+    }
+
+    // 주문 목록 조회
+    @GetMapping
+    public ResponseEntity<Page<OrderResponse>> getAll(Pageable pageable) {
+        Page<OrderResponse> responses = orderService.getAll(pageable);
+        return ResponseEntity.ok(responses);
     }
 }
