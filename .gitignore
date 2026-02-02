@@ -38,3 +38,6 @@ out/
 
 ### Env ###
 .env
+
+### test application properties ###
+application-test.properties
