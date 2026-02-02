@@ -28,7 +28,7 @@ public class ProductService {
 
     // 상품 수정
     public void update(Long productId, ProductUpdateRequest request) {
-        Product product = productRepository.findById(productId)
+        Product product = productRepository.findByIdAndDeletedFalse(productId)
             .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
 
         product.update(
@@ -41,7 +41,7 @@ public class ProductService {
     // 상품 단건 조회
     @Transactional(readOnly = true)
     public ProductResponse get(Long productId) {
-        Product product = productRepository.findById(productId)
+        Product product = productRepository.findByIdAndDeletedFalse(productId)
             .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
 
         return ProductResponse.from(product);
@@ -50,13 +50,16 @@ public class ProductService {
     // 상품 목록 조회
     @Transactional(readOnly = true)
     public List<ProductResponse> getAll() {
-        return productRepository.findAll().stream()
+        return productRepository.findAllByDeletedFalse().stream()
             .map(ProductResponse::from)
             .toList();
     }
 
     // 상품 삭제
     public void delete(Long productId) {
-        productRepository.deleteById(productId);
+        Product product = productRepository.findByIdAndDeletedFalse(productId)
+            .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
+
+        product.delete();
     }
 }

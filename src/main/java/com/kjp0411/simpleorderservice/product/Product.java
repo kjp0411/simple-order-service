@@ -21,6 +21,9 @@ public class Product {
     @Column(nullable = false)
     private int stock;
 
+    @Column(name = "deleted", nullable = false)
+    private boolean deleted = false;
+
     protected Product() {
     }
 
@@ -41,6 +44,14 @@ public class Product {
             throw new IllegalStateException("상품 재고가 부족합니다.");
         }
         this.stock -= quantity;
+    }
+
+    public void delete() {
+        this.deleted = true;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
     }
 
     public Long getId() {
