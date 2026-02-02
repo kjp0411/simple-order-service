@@ -25,8 +25,9 @@ public class OrderService {
      */
     @Transactional
     public Long createOrder(Long productId, int quantity) {
-        // 1. 상품 조회
-        Product product = productRepository.findById(productId)
+        // 1. 상품 조회 (비관적 락 적용)
+        // 동시 주문 시 동일 상품의 재고 정합성을 보장하기 위함
+        Product product = productRepository.findByIdWithLock(productId)
             .orElseThrow(()-> new IllegalArgumentException("상품이 존재하지 않습니다."));
 
         // 2. 재고 차감
