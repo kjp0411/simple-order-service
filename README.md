@@ -51,7 +51,7 @@ Spring Boot 기반의 주문 관리 미니 프로젝트입니다.
 페이징 처리된 주문 목록과 함께 각 주문에 대한 상품 정보가 정상적으로 조회됩니다.
 
 <p align="center">
-  <img src="images/orders-list.png" width="450"/>
+  <img src="images/orders-list.png" width="500"/>
 
 </p>
 
@@ -85,15 +85,15 @@ Spring Boot 기반의 주문 관리 미니 프로젝트입니다.
 
 주요 기능에 대한 API 엔드포인트를 요약했습니다.
 
-| Method | URL | 설명 |
-|------|-----|------|
-| GET | /api/products | 상품 목록 조회 |
-| GET | /api/products/{id} | 상품 단건 조회 |
-| POST | /api/products | 상품 등록 |
-| PATCH | /api/products/{id} | 상품 수정 |
-| DELETE | /api/products/{id} | 상품 삭제 |
-| POST | /api/orders | 주문 생성 |
-| GET | /api/orders | 주문 목록 조회 |
+| Method | URL | 설명             |
+|--------|-----|----------------|
+| POST    | /api/products | 상품 등록          |
+| GET    | /api/products/{id} | 상품 단건 조회       |
+| GET   | /api/products | 상품 목록 조회 (페이징) |
+| PUT    | /api/products/{id} | 상품 수정          |
+| DELETE | /api/products/{id} | 상품 삭제          |
+| POST   | /api/orders | 주문 생성          |
+| GET    | /api/orders | 주문 목록 조회       |
 
 ---
 
